@@ -27,7 +27,5 @@ test.describe('Check funktion serching', () => {
     await page.waitForTimeout(1000);
 
     await expect(page.locator('div.Search_Inner')).not.toBeVisible();
-
-    //написати тест на пошук по тексту та перевірку тих товарів які будуть виведені в результаті. Також перевірити кількість, ну короч по красивому
   });
 });
