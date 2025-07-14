@@ -65,7 +65,6 @@ test.describe('check header elements', () => {
     const header = page.locator('#section-header');
     await expect(header).toBeTruthy();
     await expect(header).toHaveClass(/Header--transparent/);
-
     await header.hover();
     await expect(header).not.toHaveClass(
       'Header Header--initialized Header--center Header--transparent',
