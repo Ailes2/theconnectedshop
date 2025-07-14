@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { accessSync } from 'fs';
 
-test.describe('check header elements', async () => {
+test.describe('check header elements', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://theconnectedshop.com/');
   });
@@ -12,7 +12,7 @@ test.describe('check header elements', async () => {
   test('Перевірка переходу на сторінку логіну', async ({ page }) => {
     const account = page.locator('#section-header').getByText('Account'); //знайшло тільки в 2 браузерах з 3. В хромі не бачить
 
-    await expect(account).toBeTruthy(); //чи є в коді елемент (селектор)
+    // await expect(account).toBeTruthy(); //чи є в коді елемент (селектор)/можна не писати окремо, бо і так перевіряє
     await expect(account).toBeVisible(); //чи видимий елемент
 
     await page.waitForTimeout(1000);
@@ -33,13 +33,13 @@ test.describe('check header elements', async () => {
 
     await expect(transparent).toHaveAttribute('alt', 'The Connected Shop Logo White');
     await expect(transparent).toHaveAttribute('width', '250');
-    await expect(transparent).toHaveAttribute('height', '75px');
+    await expect(transparent).toHaveAttribute('height', '75px'); // має працювати і при вказанні тільки числового значення
   });
 
   test('Check search element', async ({ page }) => {
     const searchElement = page.locator('#section-header').getByText('Search');
 
-    await expect(searchElement).toBeTruthy();
+    // await expect(searchElement).toBeTruthy();
     await expect(searchElement).toBeVisible();
     await expect(searchElement).toHaveAttribute('href', '/search');
   });
