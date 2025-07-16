@@ -32,9 +32,9 @@ test.describe('Check function serching', () => {
     //Далі перевіряємо результат що поле "Results не 0"
     const resultText = await searchAmoutResults.textContent();
     const match = resultText?.match(/(\d+)\s+results/);
-    expect(match).not.toBeNull();
+    await expect(match).not.toBeNull();
     const resultCount = Number(match![1]);
-    expect(resultCount).toBeGreaterThan(0);
+    await expect(resultCount).toBeGreaterThan(0);
 
     const productText = await firstProductTitle.textContent();
     await expect(productText?.toLowerCase()).toContain(query.toLowerCase());
