@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Login to site theconnectedshop', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://theconnectedshop.com/pages/contact-us');
+    await page.goto('/pages/contact-us');
   });
 
   test.afterEach(async ({ page }) => {
