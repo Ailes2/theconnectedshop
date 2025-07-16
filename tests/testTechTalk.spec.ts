@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Check funktion serching', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://theconnectedshop.com/blogs/tech-talk');
+    await page.goto('/blogs/tech-talk');
   });
 
   test.afterEach(async ({ page }) => {

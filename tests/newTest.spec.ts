@@ -11,6 +11,7 @@ test.describe('check header elements', () => {
 
   test('Перевірка переходу на сторінку логіну', async ({ page }) => {
     const account = page.locator('#section-header').getByText('Account'); //знайшло тільки в 2 браузерах з 3. В хромі не бачить
+    //можна писати такий локатор на заміну getByText, page.locator('#section-header a', { hasText: 'Account' });
 
     // await expect(account).toBeTruthy(); //чи є в коді елемент (селектор)/можна не писати окремо, бо і так перевіряє
     await expect(account).toBeVisible(); //чи видимий елемент
