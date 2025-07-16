@@ -61,7 +61,6 @@ test.describe('check header elements', () => {
     await iconCloseDrawer.click();
     await expect(cartDrawerContainer).toBeHidden();
   });
-
   test('Check the header animation', async ({ page }) => {
     const header = page.locator('#section-header');
     await expect(header).toBeTruthy();
