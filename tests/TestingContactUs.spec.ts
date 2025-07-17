@@ -39,9 +39,9 @@ test.describe('Login to site theconnectedshop', () => {
 
     await buttonSendMessage.click();
 
-    //чомусь на цьому кроці пише повідомлення "Хост theconnectedshop.com відхилив запит на з’єднання."
-    // const alertText = page.locator('div.Rte p.Alert');
-    // await expect(alertText).toBeVisible();
-    // await expect(alertText).toHaveText('Your message has been successfully sent.');
+    //Незнаю як далі, зявилась капча після кліку
+    const successMessage = page.locator('#contact_form .note.form-success');
+    await expect(successMessage).toBeVisible();
+    await expect(successMessage).toHaveText('Your message has been successfully sent.');
   });
 });
