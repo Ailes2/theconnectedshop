@@ -14,6 +14,8 @@ test.describe('Check cookies', () => {
     await expect(localization?.value).toBe('UA');
     await expect(localization?.domain).toBe('theconnectedshop.com');
     await expect(localization?.path).toBe('/');
+    await expect(localization?.httpOnly).toBe(false);
+    await expect(localization?.secure).toBe(false);
   });
 
   test('Check currency cookie', async ({ context }) => {
@@ -25,5 +27,7 @@ test.describe('Check cookies', () => {
     await expect(currencyCart?.value).toBe('UAH');
     await expect(currencyCart?.domain).toBe('theconnectedshop.com');
     await expect(currencyCart?.path).toBe('/');
+    await expect(currencyCart?.httpOnly).toBe(false);
+    await expect(currencyCart?.secure).toBe(false);
   });
 });
