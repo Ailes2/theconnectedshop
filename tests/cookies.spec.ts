@@ -2,12 +2,12 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Check cookies', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://theconnectedshop.com');
+    await page.goto('/');
   });
 
   test('Check localization cookie', async ({ context }) => {
     const cookies = await context.cookies();
-    console.log(cookies);
+    // console.log(cookies);
     const localization = cookies.find((c) => c.name === 'localization');
     await expect(localization).toBeDefined();
 
