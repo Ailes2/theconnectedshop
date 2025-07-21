@@ -11,7 +11,7 @@ test.describe('Check iframe', () => {
 
   test('Check iframe attribute"', async ({ page }) => {
     const allFraime = page.frames();
-    console.log('Всього найдено стільки фреймів - ' + allFraime.length);
+    console.log('Всього найдено ' + allFraime.length + ' фреймів');
     const frameWebPixel = page.locator(
       '#web-pixel-sandbox-CUSTOM-shopify-custom-pixel-LAX-aa986369w89f019d8pedb14a83mf698ddc1',
     );
