@@ -39,7 +39,6 @@ test.describe('Check function serching', () => {
     const productText = await firstProductTitle.textContent();
     await expect(productText?.toLowerCase()).toContain(query.toLowerCase());
     await searchClose.click();
-
     await expect(searchInput).not.toBeVisible();
   });
 });
