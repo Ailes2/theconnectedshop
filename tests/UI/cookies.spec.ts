@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Check cookies', () => {
+test.describe('Check localization', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
@@ -23,7 +23,7 @@ test.describe('Check cookies', () => {
     await expect(localization?.expires).toBeLessThan(maxExpireData);
   });
 
-  test('Check currency cookie', async ({ context }) => {
+  test('Check currency cart', async ({ context }) => {
     const cookies = await context.cookies();
     const currencyCart = cookies.find((c) => c.name === 'cart_currency');
     // console.log(currencyCart);
