@@ -28,7 +28,7 @@ test.describe('Check localization', () => {
     const currencyCart = cookies.find((c) => c.name === 'cart_currency');
     // console.log(currencyCart);
     const now = Date.now() / 1000;
-    const minExpireData = now + 60 * 60 * 24 * 13; // 60 секунд і 60 хвилин, 24 години на день, 363 днів (похибка на мінус 1 день)
+    const minExpireData = now + 60 * 60 * 24 * 13; // 60 секунд і 60 хвилин, 24 години на день, 13 днів(похибка на мінус 1 день)
     const maxExpireData = now + 60 * 60 * 24 * 15; //а тут похибка на +1 день
 
     await expect(currencyCart).toBeDefined();
