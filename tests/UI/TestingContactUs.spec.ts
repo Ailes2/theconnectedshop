@@ -38,7 +38,6 @@ test.describe('Login to site theconnectedshop', () => {
     await expect(fieldPhone).toHaveValue('0999999999');
     await fieldmessage.fill('Не переймайтесь. Тест');
     await expect(fieldmessage).toHaveValue('Не переймайтесь. Тест');
-
     await buttonSendMessage.click();
 
     //Незнаю як далі, зявилась капча після кліку
