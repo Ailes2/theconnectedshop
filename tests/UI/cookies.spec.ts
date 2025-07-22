@@ -7,7 +7,7 @@ test.describe('Check localization', () => {
 
   test('Check localization cookie', async ({ context }) => {
     const cookies = await context.cookies();
-    console.log(cookies);
+    // console.log(cookies);
     const localization = cookies.find((c) => c.name === 'localization');
     const now = Date.now() / 1000;
     const minExpireData = now + 60 * 60 * 24 * 364; // 60 секунд і 60 хвилин, 24 години на день, 363 днів (похибка на мінус 1 день)
