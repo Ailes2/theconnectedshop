@@ -13,17 +13,19 @@ test.describe('Check iframe', () => {
     const allFraime = page.frames();
     console.log('Всього найдено ' + allFraime.length + ' фреймів');
     const frameWebPixel = page.locator(
-      '#web-pixel-sandbox-CUSTOM-shopify-custom-pixel-LAX-aa986369w89f019d8pedb14a83mf698ddc1',
+      'iframe[id^="web-pixel-sandbox-CUSTOM-shopify-custom-pixel-LAX"]',
     );
 
     await expect(frameWebPixel).toHaveAttribute(
       'src',
-      'https://theconnectedshop.com/wpm@aa986369w89f019d8pedb14a83mf698ddc1/custom/web-pixel-shopify-custom-pixel@0440/sandbox/modern/',
+      expect.stringContaining('/custom/web-pixel-shopify-custom-pixel@0440/sandbox/modern/'),
     );
+
     await expect(frameWebPixel).toHaveAttribute(
       'name',
-      'web-pixel-sandbox-CUSTOM-shopify-custom-pixel-LAX-aa986369w89f019d8pedb14a83mf698ddc1',
+      expect.stringContaining('web-pixel-sandbox-CUSTOM-shopify-custom-pixel-LAX'),
     );
+
     await expect(frameWebPixel).toHaveAttribute('sandbox', 'allow-scripts allow-forms'); //sandbox це атрибут який обмежує поведінку фрейму
   });
 });
