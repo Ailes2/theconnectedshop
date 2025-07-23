@@ -2,16 +2,16 @@ import { test, expect } from '@playwright/test';
 import { Search } from '../pages/search';
 
 test.describe('Check function serching', () => {
-  // test.beforeEach(async ({ page }) => {
-  //   await page.goto('/');
-  //   const searchLink = page.locator('#section-header').getByText('Search');
-  //   await expect(searchLink).toBeVisible();
-  //   await searchLink.click();
-  // });
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    const searchLink = page.locator('#section-header').getByText('Search');
+    await expect(searchLink).toBeVisible();
+    await searchLink.click();
+  });
 
-  // test.afterEach(async ({ page }) => {
-  //   await page.close();
-  // });
+  test.afterEach(async ({ page }) => {
+    await page.close();
+  });
 
   test('check exist element', async ({ page }) => {
     const search = new Search(page);
