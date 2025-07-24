@@ -52,5 +52,4 @@ export class Search {
     await this.searchClose.click();
     await expect(this.searchInput).not.toBeVisible();
   }
-  //1
 }
