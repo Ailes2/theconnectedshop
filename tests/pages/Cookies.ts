@@ -1,17 +1,17 @@
 import { BrowserContext, expect } from '@playwright/test';
 
-export class header {
+export class Cookies {
   readonly context: BrowserContext;
 
   constructor(context: BrowserContext) {
     this.context = context;
   }
 
-  async coockiesLocalization() {
+  async cookiesLocalization() {
     const cookies = await this.context.cookies();
     const localization = cookies.find((c) => c.name === 'localization');
     const now = Date.now() / 1000;
-    const minExpireData = now + 60 * 60 * 24 * 364; // 60 секунд і 60 хвилин, 24 години на день, 363 днів (похибка на мінус 1 день)
+    const minExpireData = now + 60 * 60 * 24 * 364; // 60 секунд і 60 хвилин, 24 години на день, 364 днів (похибка на мінус 1 день)
     const maxExpireData = now + 60 * 60 * 24 * 366; //а тут похибка на +1 день
 
     await expect(localization).toBeDefined();
