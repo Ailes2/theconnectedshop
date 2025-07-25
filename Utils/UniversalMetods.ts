@@ -43,4 +43,5 @@ export class UniversalMetods {
     const text = await locator.textContent();
     return text?.trim() || ''; // більше дізнатись
   }
+  //
 }
