@@ -1,5 +1,4 @@
 import { test, expect, Page, Locator } from '@playwright/test';
-import { Header } from './Header';
 
 export class Search {
   readonly page: Page;
