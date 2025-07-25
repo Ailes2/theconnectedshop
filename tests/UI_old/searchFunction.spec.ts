@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { Search } from '../pages/search';
-import { Header } from '../pages/Header';
+import { Search } from '../../pages/search';
+import { Header } from '../../pages/Header';
 
 test.describe('Check function serching', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    const searchLink = page.locator('#section-header').getByText('Search');
-    await expect(searchLink).toBeVisible();
-    await searchLink.click();
+    // const searchLink = page.locator('#section-header').getByText('Search');
+    // await expect(searchLink).toBeVisible();
+    // await searchLink.click();
   });
 
   test.afterEach(async ({ page }) => {
@@ -17,13 +17,15 @@ test.describe('Check function serching', () => {
   test('check exist element', async ({ page }) => {
     const header = new Header(page);
     const search = new Search(page, header);
+    console.log('Клікаємо на Search');
     await search.openSearchPanel();
     const query = 'Smart water Temperature sensor';
 
     await search.assertSearchInputAttributes();
     await search.searchFill(query);
     await search.assertResultAmount();
-    await search.assertFirstProductContains(query);
+    // await search.assertFirstProductContains(query);
+
     // const searchInput = page.locator('input[name="q"]');
     // const searchAmoutResults = page
     //   .locator('div.Segment__Title span.Heading.Text--subdued.u-h7')

@@ -1,4 +1,4 @@
-import { test, expect, Page, Locator } from '@playwright/test';
+import { expect, Page, Locator } from '@playwright/test';
 
 export class Header {
   readonly page: Page; // readonly - ініціалізація локаторів

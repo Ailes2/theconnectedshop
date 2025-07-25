@@ -1,8 +1,9 @@
-import { test, expect, Page, Locator } from '@playwright/test';
+import { expect, Page, Locator } from '@playwright/test';
 import { Header } from './Header';
+import { UniversalMetods } from '../Utils/UniversalMetods';
 
-export class Search {
-  readonly page: Page;
+export class Search extends UniversalMetods {
+  // readonly page: Page;
   readonly header: Header;
   readonly searchLink: Locator;
   readonly searchInput: Locator;
@@ -11,7 +12,8 @@ export class Search {
   readonly firstProductTitle: Locator;
 
   constructor(page: Page, header: Header) {
-    this.page = page;
+    // this.page = page;
+    super(page);
     this.header = header;
     this.searchLink = this.header.selectionHeader.locator('a', { hasText: 'Search' });
     this.searchInput = page.locator('input[name="q"]');
@@ -23,8 +25,10 @@ export class Search {
   }
 
   async openSearchPanel() {
-    await expect(this.searchLink).toBeVisible();
-    await this.searchLink.click();
+    // await expect(this.searchLink).toBeVisible();
+    await this.safeVisible(this.searchLink, 'SerchPage is visible');
+    // await this.searchLink.click();
+    await this.safeClick(this.searchLink, 'SearchPage was clicked');
   }
 
   async assertSearchInputAttributes() {
@@ -51,7 +55,7 @@ export class Search {
     const productText = await this.firstProductTitle.textContent();
     await expect(productText?.toLowerCase()).toContain(query.toLowerCase());
     await this.searchClose.click();
-    await expect(this.searchInput).not.toBeVisible();
+    await expect(this.searchInput).not.toBeVisible(); //краще вибирати toBeHidden. Бо якщо використовувати not можуть бути помилки
   }
   //
 }
