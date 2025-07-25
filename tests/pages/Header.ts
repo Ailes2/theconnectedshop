@@ -1,6 +1,6 @@
 import { test, expect, Page, Locator } from '@playwright/test';
 
-export class header {
+export class Header {
   readonly page: Page; // readonly - ініціалізація локаторів
   readonly accountLink: Locator;
   readonly searchLink: Locator;
