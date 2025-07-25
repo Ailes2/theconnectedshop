@@ -1,16 +1,19 @@
 import { test, expect, Page, Locator } from '@playwright/test';
+import { Header } from './Header';
 
 export class Search {
   readonly page: Page;
+  readonly header: Header;
   readonly searchLink: Locator;
   readonly searchInput: Locator;
   readonly searchAmountResult: Locator;
   readonly searchClose: Locator;
   readonly firstProductTitle: Locator;
 
-  constructor(page: Page) {
+  constructor(page: Page, header: Header) {
     this.page = page;
-    this.searchLink = this.header.locator('a', { hasText: 'Search' });
+    this.header = header;
+    this.searchLink = this.header.selectionHeader.locator('a', { hasText: 'Search' });
     this.searchInput = page.locator('input[name="q"]');
     this.searchAmountResult = page.locator('div.Segment__Title span.Heading.Text--subdued.u-h7', {
       hasText: /results$/,

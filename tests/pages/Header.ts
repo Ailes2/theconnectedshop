@@ -10,14 +10,14 @@ export class Header {
   readonly logoLink: Locator;
   readonly logoPrimary: Locator;
   readonly logoTransparent: Locator;
-  readonly header: Locator;
+  readonly selectionHeader: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.header = page.locator('#section-header');
-    this.accountLink = this.header.locator('a', { hasText: 'Account' });
-    this.searchLink = this.header.locator('a', { hasText: 'Search' });
-    this.cartLink = this.header.locator('a', { hasText: 'Cart (' });
+    this.selectionHeader = page.locator('#section-header');
+    this.accountLink = this.selectionHeader.locator('a', { hasText: 'Account' });
+    this.searchLink = this.selectionHeader.locator('a', { hasText: 'Search' });
+    this.cartLink = this.selectionHeader.locator('a', { hasText: 'Cart (' });
     this.cartDrawer = page.locator('#sidebar-cart');
     this.closeCartButton = page.getByRole('button', { name: 'Close cart' });
     this.logoLink = page.locator('.Header__LogoLink');
@@ -58,9 +58,9 @@ export class Header {
   }
 
   async checkHeaderAnimation() {
-    await expect(this.header).toHaveClass(/Header--transparent/);
-    await this.header.hover();
-    await expect(this.header).not.toHaveClass(
+    await expect(this.selectionHeader).toHaveClass(/Header--transparent/);
+    await this.selectionHeader.hover();
+    await expect(this.selectionHeader).not.toHaveClass(
       'Header Header--initialized Header--center Header--transparent',
     );
   }

@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { Search } from '../pages/search';
+import { Header } from '../pages/Header';
 
 test.describe('Check function serching', () => {
   test.beforeEach(async ({ page }) => {
@@ -14,7 +15,8 @@ test.describe('Check function serching', () => {
   });
 
   test('check exist element', async ({ page }) => {
-    const search = new Search(page);
+    const header = new Header(page);
+    const search = new Search(page, header);
     await search.openSearchPanel();
     const query = 'Smart water Temperature sensor';
 
