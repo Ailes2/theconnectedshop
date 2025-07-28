@@ -8,7 +8,7 @@ export class UniversalMetods {
   }
 
   async safeClick(locator: Locator, description = 'element') {
-    const desc = description?.trim() || locator.toString();
+    const desc = this.locatorHaveString(description, locator);
     try {
       await this.safeVisible(locator, desc);
       await locator.click();
@@ -18,7 +18,7 @@ export class UniversalMetods {
   }
 
   async safeFill(locator: Locator, value: string, description = 'input') {
-    const desc = description?.trim() || locator.toString();
+    const desc = this.locatorHaveString(description, locator);
     try {
       await this.safeVisible(locator, desc);
       await locator.fill(value);
@@ -29,7 +29,7 @@ export class UniversalMetods {
   }
 
   async safeVisible(locator: Locator, description = 'element') {
-    const desc = description?.trim() || locator.toString();
+    const desc = this.locatorHaveString(description, locator);
     try {
       await expect(locator).toBeVisible();
     } catch (error) {
@@ -44,7 +44,7 @@ export class UniversalMetods {
   async getText(locator: Locator): Promise<string> {
     await this.safeVisible(locator);
     const text = await locator.textContent();
-    return text?.trim() || ''; // більше дізнатись
+    return text?.trim() || '';
   }
 
   async safeToHaveAttribute(
@@ -53,7 +53,8 @@ export class UniversalMetods {
     value: string,
     description = 'Element',
   ) {
-    const desc = description?.trim() || locator.toString();
+    const desc = this.locatorHaveString(description, locator);
+
     try {
       await this.safeVisible(locator, desc);
       await expect(locator).toHaveAttribute(param, value);
@@ -62,5 +63,9 @@ export class UniversalMetods {
         `${desc} does not have expected attribute "${param}" with value "${value}": ${error}`,
       );
     }
+  }
+
+  private locatorHaveString(description: string, locator: Locator) {
+    return description?.trim() || locator.toString();
   }
 }
