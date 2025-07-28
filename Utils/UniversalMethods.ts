@@ -54,7 +54,6 @@ export class UniversalMetods {
     description = 'Element',
   ) {
     const desc = this.locatorHaveString(description, locator);
-
     try {
       await this.safeVisible(locator, desc);
       await expect(locator).toHaveAttribute(param, value);
