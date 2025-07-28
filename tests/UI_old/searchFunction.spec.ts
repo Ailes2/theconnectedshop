@@ -18,6 +18,7 @@ test('check exist element', async ({ page }) => {
   await search.assertSearchInputAttributes();
 
   await universalMetods.safeFill(search.searchInput, query, 'Search fild');
+
   // await search.searchFill(query);
   await search.assertResultAmount();
   // await search.assertFirstProductContains(query);
