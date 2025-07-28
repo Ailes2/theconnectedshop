@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { Search } from '../../pages/search';
 import { Header } from '../../pages/Header';
-import { UniversalMetods } from '../../Utils/UniversalMetods';
+import { UniversalMetods } from '../../Utils/UniversalMethods';
 import { HomePage } from '../../pages/HomePage';
 
 test('check exist element', async ({ page }) => {

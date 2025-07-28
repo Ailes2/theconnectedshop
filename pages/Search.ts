@@ -1,6 +1,6 @@
 import { expect, Page, Locator } from '@playwright/test';
 import { Header } from './Header';
-import { UniversalMetods } from '../Utils/UniversalMetods';
+import { UniversalMetods } from '../Utils/UniversalMethods';
 
 export class Search extends UniversalMetods {
   // readonly page: Page;
