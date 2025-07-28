@@ -32,10 +32,11 @@ export class Search extends UniversalMetods {
   }
 
   async assertSearchInputAttributes() {
+    this.safeToHaveAttribute(this.searchInput, 'placeholder', 'Search...');
+    this.safeToHaveAttribute(this.searchInput, 'type', 'search');
+    this.safeToHaveAttribute(this.searchInput, 'aria-label', 'Search...');
+
     await expect(this.searchInput).toBeVisible();
-    await expect(this.searchInput).toHaveAttribute('placeholder', 'Search...');
-    await expect(this.searchInput).toHaveAttribute('type', 'search');
-    await expect(this.searchInput).toHaveAttribute('aria-label', 'Search...');
   }
 
   async searchFill(query: string) {

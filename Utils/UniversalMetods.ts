@@ -44,17 +44,19 @@ export class UniversalMetods {
     return text?.trim() || ''; // більше дізнатись
   }
 
-  async safeToHaveAttributes(
+  async safeToHaveAttribute(
     locator: Locator,
     param: string,
     value: string,
-    description = 'attribute',
+    description = 'Element',
   ) {
     try {
       await this.safeVisible(locator, description);
       await expect(locator).toHaveAttribute(param, value);
     } catch (error) {
-      throw new Error(`${description} is not find: ${error}`);
+      throw new Error(
+        `${description} does not have expected attribute "${param}" with value "${value}": ${error}`,
+      );
     }
   }
 }
