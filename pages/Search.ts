@@ -56,7 +56,7 @@ export class Search extends UniversalMetods {
     const productText = await this.firstProductTitle.textContent();
     await expect(productText?.toLowerCase()).toContain(query.toLowerCase());
     await this.searchClose.click();
-    await expect(this.searchInput).not.toBeVisible(); //краще вибирати toBeHidden. Бо якщо використовувати not можуть бути помилки
+    await expect(this.searchInput).toBeHidden(); //краще вибирати toBeHidden. Бо якщо використовувати not можуть бути помилки
   }
   //
 }
