@@ -1,58 +1,24 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { Search } from '../../pages/search';
 import { Header } from '../../pages/Header';
+import { UniversalMetods } from '../../Utils/UniversalMetods';
+import { HomePage } from '../../pages/HomePage';
 
-test.describe('Check function serching', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/');
-    // const searchLink = page.locator('#section-header').getByText('Search');
-    // await expect(searchLink).toBeVisible();
-    // await searchLink.click();
-  });
+test('check exist element', async ({ page }) => {
+  const homePage = new HomePage(page);
+  const header = new Header(page);
+  const search = new Search(page, header);
+  const universalMetods = new UniversalMetods(page);
 
-  test.afterEach(async ({ page }) => {
-    await page.close();
-  });
+  await homePage.goToHomePage();
 
-  test('check exist element', async ({ page }) => {
-    const header = new Header(page);
-    const search = new Search(page, header);
-    console.log('Клікаємо на Search');
-    await search.openSearchPanel();
-    const query = 'Smart water Temperature sensor';
+  await search.openSearchPanel();
+  const query = 'Smart water Temperature sensor';
 
-    await search.assertSearchInputAttributes();
-    await search.searchFill(query);
-    await search.assertResultAmount();
-    // await search.assertFirstProductContains(query);
+  await search.assertSearchInputAttributes();
 
-    // const searchInput = page.locator('input[name="q"]');
-    // const searchAmoutResults = page
-    //   .locator('div.Segment__Title span.Heading.Text--subdued.u-h7')
-    //   .filter({ hasText: /results$/ }); //довго мучався, бо локатор не унікальний і який би не робив локатор находило 2 елемента. Цей підхід підсказав gpt
-    // const searchClose = page.locator('button.Search__Close');
-    // const firstProductTitle = page.locator('h2.ProductItem__Title a').first(); //Перший елемент по рахунку, якщо найдено по локатору 2
-    // const query = 'Smart water Temperature sensor';
-
-    // await expect(searchInput).toHaveAttribute('placeholder', 'Search...');
-    // await expect(searchInput).toHaveAttribute('type', 'search');
-    // await expect(searchInput).toHaveAttribute('aria-label', 'Search...');
-
-    // await searchInput.fill(query);
-    // await expect(searchInput).toHaveValue(query);
-
-    // await expect(searchAmoutResults).toBeVisible();
-
-    // //Далі перевіряємо результат що поле "Results не 0"
-    // const resultText = await searchAmoutResults.textContent();
-    // const match = resultText?.match(/(\d+)\s+results/);
-    // await expect(match).not.toBeNull();
-    // const resultCount = Number(match![1]);
-    // await expect(resultCount).toBeGreaterThan(0);
-
-    // const productText = await firstProductTitle.textContent();
-    // await expect(productText?.toLowerCase()).toContain(query.toLowerCase());
-    // await searchClose.click();
-    // await expect(searchInput).not.toBeVisible();
-  });
+  await universalMetods.safeFill(search.searchInput, query, 'Search fild');
+  // await search.searchFill(query);
+  await search.assertResultAmount();
+  // await search.assertFirstProductContains(query);
 });

@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test';
-import { accessSync } from 'fs';
 
 test.describe('check header elements', () => {
   test.beforeEach(async ({ page }) => {

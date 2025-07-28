@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { Cookies } from '../pages/Cookies';
+import { Cookies } from '../../pages/Cookies';
 
 test.describe('Check localization', () => {
   test.beforeEach(async ({ page }) => {
