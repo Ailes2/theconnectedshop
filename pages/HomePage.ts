@@ -8,7 +8,7 @@ export class HomePage {
   }
 
   async goToHomePage() {
-    await this.page.goto('/');
+    await this.page.goto('https://theconnectedshop.com/');
   }
   async assertTitle(expectedTitle: string) {
     await expect(this.page).toHaveTitle(expectedTitle);
