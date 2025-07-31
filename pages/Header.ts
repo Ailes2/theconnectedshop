@@ -1,4 +1,5 @@
 import { expect, Page, Locator } from '@playwright/test';
+import { UniversalMetods } from '../Utils/UniversalMethods';
 
 export class Header {
   readonly page: Page; // readonly - ініціалізація локаторів
@@ -11,6 +12,9 @@ export class Header {
   readonly logoPrimary: Locator;
   readonly logoTransparent: Locator;
   readonly selectionHeader: Locator;
+  readonly unic: UniversalMetods;
+  readonly collaction: Locator;
+  readonly collactionsProduct: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -23,6 +27,9 @@ export class Header {
     this.logoLink = page.locator('.Header__LogoLink');
     this.logoPrimary = page.locator('.Header__LogoImage--primary');
     this.logoTransparent = page.locator('.Header__LogoImage--transparent');
+    this.unic = new UniversalMetods(page);
+    this.collaction = page.locator('.HorizontalList__Item', { hasText: 'Collections' });
+    this.collactionsProduct = page.locator('.PageHeader', { hasText: 'Products' });
   }
 
   async openAccountPage() {
@@ -63,5 +70,11 @@ export class Header {
     await expect(this.selectionHeader).not.toHaveClass(
       'Header Header--initialized Header--center Header--transparent',
     );
+  }
+
+  async openCollections() {
+    await this.unic.safeVisible(this.collaction);
+    await this.unic.safeClick(this.collaction);
+    await this.unic.safeVisible(this.collactionsProduct);
   }
 }
