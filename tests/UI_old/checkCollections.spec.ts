@@ -32,6 +32,9 @@ test.describe('Check the Collactions page', () => {
     unic = new UniversalMetods(page);
     collact = new Collactions(page);
     header = new Header(page);
+
+    //Виносимо в beforeEach щоб не повторювати в кожному тесті
+    await header.openCollections();
   });
 
   test('Check collaction products ', async ({}) => {
@@ -49,7 +52,7 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check Smart Door Locks product', async ({}) => {
-    await header.openCollections();
+    // await header.openCollections();
 
     await collact.checkDescribeTheProduct(
       smartDoorProduct,
@@ -58,7 +61,7 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check smart lockes products', async ({}) => {
-    await header.openCollections();
+    // await header.openCollections();
 
     await collact.checkDescribeTheProduct(
       smartLocksProduct,
@@ -67,7 +70,7 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check smart sensor products', async ({}) => {
-    await header.openCollections();
+    // await header.openCollections();
 
     await collact.checkDescribeTheProduct(
       smartSensorsProduct,
@@ -76,7 +79,7 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check camera monitors products', async ({}) => {
-    await header.openCollections();
+    // await header.openCollections();
 
     await collact.checkDescribeTheProduct(
       cameraMonitorProduct,
@@ -85,7 +88,7 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check robots products', async ({}) => {
-    await header.openCollections();
+    // await header.openCollections();
 
     await collact.checkDescribeTheProduct(
       smartRobotsProduct,
@@ -94,7 +97,7 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check smart wallets products', async ({}) => {
-    await header.openCollections();
+    // await header.openCollections();
 
     await collact.checkDescribeTheProduct(
       smartWalletsProduct,
@@ -103,7 +106,7 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check car dash cams products', async ({}) => {
-    await header.openCollections();
+    // await header.openCollections();
 
     await collact.checkDescribeTheProduct(
       carDashCamsProduct,
