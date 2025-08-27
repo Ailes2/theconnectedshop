@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { Search } from '../../pages/search';
 import { Header } from '../../pages/Header';
 import { HomePage } from '../../pages/HomePage';
-import { UniversalMetods } from '../../Utils/UniversalMethods';
+import { UniversalMethods } from '../../Utils/UniversalMethods';
 
 test.describe('Go to home page', () => {
   test.beforeEach(async ({ page }) => {
@@ -14,7 +14,7 @@ test.describe('Go to home page', () => {
     const header = new Header(page);
     const search = new Search(page, header);
     const query = 'Smart water Temperature sensor';
-    const unic = new UniversalMetods(page);
+    const unic = new UniversalMethods(page);
 
     await test.step('Search input is opening', async () => {
       await search.openSearchPanel();

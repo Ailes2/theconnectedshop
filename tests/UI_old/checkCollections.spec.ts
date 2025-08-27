@@ -1,7 +1,7 @@
 import { test, Locator } from '@playwright/test';
 import { HomePage } from '../../pages/HomePage';
-import { UniversalMetods } from '../../Utils/UniversalMethods';
-import { Collactions } from '../../pages/Collections';
+import { UniversalMethods } from '../../Utils/UniversalMethods';
+import { Collections } from '../../pages/Collections';
 import { Header } from '../../pages/Header';
 
 test.describe('Check the Collactions page', () => {
@@ -13,8 +13,8 @@ test.describe('Check the Collactions page', () => {
   let smartWalletsProduct: Locator;
   let carDashCamsProduct: Locator;
 
-  let unic: UniversalMetods;
-  let collact: Collactions;
+  let unic: UniversalMethods;
+  let collact: Collections;
   let header: Header;
 
   test.beforeEach(async ({ page }) => {
@@ -29,8 +29,8 @@ test.describe('Check the Collactions page', () => {
     smartWalletsProduct = page.locator('a.CollectionItem', { hasText: 'Smart Wallets' });
     carDashCamsProduct = page.locator('a.CollectionItem', { hasText: 'Car Dash Cams' });
 
-    unic = new UniversalMetods(page);
-    collact = new Collactions(page);
+    unic = new UniversalMethods(page);
+    collact = new Collections(page);
     header = new Header(page);
 
     //Виносимо в beforeEach щоб не повторювати в кожному тесті
@@ -52,8 +52,6 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check Smart Door Locks product', async ({}) => {
-    // await header.openCollections();
-
     await collact.checkDescribeTheProduct(
       smartDoorProduct,
       'Find here the latest selection of the best connected smart door locks. Smart door locks offer a convenient way to secure your home or office as well as to offer a simple way to get rid of keys. They feature, fingerprint unlock access, mobile app connection with Bluetooth, passcode key pad, physical backup keys.',
@@ -61,8 +59,6 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check smart lockes products', async ({}) => {
-    // await header.openCollections();
-
     await collact.checkDescribeTheProduct(
       smartLocksProduct,
       'Smart locks, door locks, bike locks and padlocks. Find here the latest selection of the best connected smart locks. Smart locks offer a convenient way to secure your home or office as well as to offer a simple way to get rid of keys. They feature, fingerprint unlock access, mobile app connection with Bluetooth, passcode key pad, physical backup keys.',
@@ -70,8 +66,6 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check smart sensor products', async ({}) => {
-    // await header.openCollections();
-
     await collact.checkDescribeTheProduct(
       smartSensorsProduct,
       'Smart sensors. Find here the latest selection of the best connected smart sensors. Smart sensors offer a convenient way to secure your home or office.',
@@ -79,8 +73,6 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check camera monitors products', async ({}) => {
-    // await header.openCollections();
-
     await collact.checkDescribeTheProduct(
       cameraMonitorProduct,
       'Smart camera monitors. Find here the latest selection of the best connected camera monitors. Smart camera monitors offer a convenient way to secure your home or office.',
@@ -88,8 +80,6 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check robots products', async ({}) => {
-    // await header.openCollections();
-
     await collact.checkDescribeTheProduct(
       smartRobotsProduct,
       'Smart robots. Find here the latest selection of the best connected robots. Smart robots offer a convenient way to help make your life easier in your home or office.',
@@ -97,8 +87,6 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check smart wallets products', async ({}) => {
-    // await header.openCollections();
-
     await collact.checkDescribeTheProduct(
       smartWalletsProduct,
       'Smart Wallets and Smart Card Holders. Find here the latest selection of the trendiest connected Bluetooth wallets. Smart wallets offer a convenient way to store and transport your money, your credit cards and ID as well as to protect you against loss or theft. They feature, device tracking, and modern design all in genuine leather.',
@@ -106,8 +94,6 @@ test.describe('Check the Collactions page', () => {
   });
 
   test('Check car dash cams products', async ({}) => {
-    // await header.openCollections();
-
     await collact.checkDescribeTheProduct(
       carDashCamsProduct,
       'Smart dash cams. Find here the latest selection of the best connected smart dash cams. Smart dash cams offer a convenient way to secure car.',
